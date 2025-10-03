@@ -14,9 +14,9 @@ export const API_BASE_URL = (() => {
     return 'http://localhost:3002';
   }
   
-  // Production - you'll need to update this to your actual server URL
-  // For now, we'll use a placeholder that you need to replace
-  return 'https://your-server-domain.herokuapp.com';
+  // Production - use Netlify Functions or external API
+  // You'll need to update this to your actual server URL
+  return 'https://your-app-name.netlify.app/.netlify/functions';
 })();
 
 // API endpoints
