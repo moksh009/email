@@ -37,6 +37,7 @@ import { toast } from 'react-toastify';
 import { templates } from '../EmailTemplates/EmailTemplates';
 import TemplatePreviewModal from '../EmailTemplates/TemplatePreviewModal';
 import CreateTemplateDialog from '../EmailTemplates/CreateTemplateDialog';
+import { API_ENDPOINTS } from '../../config/api';
 
 function EmailForm({ onEmailGeneration, loading, selectedTemplate, onClose }) {
   const theme = useTheme();
@@ -58,7 +59,7 @@ function EmailForm({ onEmailGeneration, loading, selectedTemplate, onClose }) {
 
   useEffect(() => {
     // Fetch available senders when component mounts
-    fetch('http://localhost:3002/api/senders')
+    fetch(API_ENDPOINTS.SENDERS)
       .then(res => {
         if (!res.ok) {
           throw new Error(`HTTP error! status: ${res.status}`);
@@ -290,7 +291,7 @@ function EmailForm({ onEmailGeneration, loading, selectedTemplate, onClose }) {
         });
       }
 
-      const response = await fetch('http://localhost:3002/api/send-email', {
+      const response = await fetch(API_ENDPOINTS.SEND_EMAIL, {
         method: 'POST',
         body: formData
       });

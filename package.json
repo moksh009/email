@@ -10,7 +10,8 @@
     "preview": "vite preview",
     "start:server": "cd server && node server.js",
     "start:client": "vite --port 5173",
-    "start": "concurrently -n server,client -c green,blue \"npm run start:server\" \"npm run start:client\""
+    "start": "concurrently -n server,client -c green,blue \"npm run start:server\" \"npm run start:client\"",
+    "netlify:deploy": "npm run build && netlify deploy --prod --dir=dist"
   },
   "dependencies": {
     "@emotion/react": "^11.14.0",

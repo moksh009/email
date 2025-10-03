@@ -12,8 +12,7 @@ import EmailForm from './components/EmailForm/EmailForm';
 import EmailList from './components/EmailList/EmailList';
 import EmailPreview from './components/EmailPreview/EmailPreview';
 import EmailTemplates from './components/EmailTemplates/EmailTemplates';
-
-const API_BASE_URL = 'http://localhost:3002';
+import { API_ENDPOINTS, API_BASE_URL } from './config/api';
 
 const App = () => {
   const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)');
@@ -155,7 +154,7 @@ const App = () => {
       }
 
       // Determine endpoint based on whether it's scheduled or immediate
-      const endpoint = `${API_BASE_URL}${isScheduled ? '/api/schedule-email' : '/api/send-email'}`;
+      const endpoint = isScheduled ? API_ENDPOINTS.SCHEDULE_EMAIL : API_ENDPOINTS.SEND_EMAIL;
 
       console.log('Sending email request:', {
         to: email.to,
